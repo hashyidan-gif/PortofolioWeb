@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROXY PORTFOLIO // Muhammad Yazid Hasyhidan</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Chakra+Petch:ital,wght@0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="relative min-h-screen bg-[#0b0b0c] text-white select-none">
+    <video
+      class="video-background"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src="media/background.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay" aria-hidden="true"></div>
+
+    <div
+      class="pointer-events-none fixed inset-0 z-50 scanline opacity-40"
+    ></div>
+
+    <header
+      class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-6 py-3 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <div
+          class="bg-zzz-yellow text-black font-black px-3 py-1 font-teko text-2xl rotate-[-2deg]"
+        >
+          PROGRAMMER //
+        </div>
+        <span
+          class="text-xs tracking-widest text-gray-400 hidden sm:inline-block"
+          >PERSONAL PROFILE</span
+        >
+      </div>
+
+      <nav class="flex gap-6 font-teko text-2xl tracking-wider">
+        <a href="#hero" class="hover:text-zzz-yellow transition-colors"
+          >[ AGENT ]</a
+        >
+
+        <a href="contact.html" class="hover:text-zzz-yellow transition-colors"
+          >[ CONTACT ]</a
+        >
+      </nav>
+    </header>
+
+    <main class="pt-24 px-6 md:px-16 max-w-7xl mx-auto">
+      <section
+        id="hero"
+        class="min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-12 py-10 relative"
+      >
+        <div class="flex-1 space-y-6 z-10">
+          <div
+            class="inline-block bg-red-600 text-black font-bold px-3 py-1 text-xs uppercase tracking-widest skew-x-[-12deg]"
+          >
+            ★ S-RANK DEVELOPER
+          </div>
+
+          <h1
+            class="text-6xl md:text-8xl font-black font-teko uppercase leading-none tracking-tight"
+          >
+            <span
+              class="glitch-text text-zzz-yellow"
+              data-text="MUHAMMAD_YAZID_HASYHIDAN"
+              >MUHAMMAD_YAZID_HASYHIDAN</span
+            ><br />
+            <span class="text-white">FRONTEND DEVELOPER</span>
+          </h1>
+
+          <div
+            class="grole text-gray-300 max-w-lg border-l-4 border-zzz-yellow pl-4 py-1"
+            id="typewriter"
+          ></div>
+
+          <br />
+          <br />
+          <br />
+
+          <div class="grid grid-cols-3 gap-4 pt-4 max-w-md">
+            <div
+              class="bg-[#18181c] border-2 border-gray-700 p-3 text-center zzz-card"
+            >
+              <div class="text-xs text-gray-400">SPECIALTY</div>
+              <div class="font-teko text-2xl text-zzz-yellow">UI / UX HUD</div>
+            </div>
+            <div
+              class="bg-[#18181c] border-2 border-gray-700 p-3 text-center zzz-card"
+            >
+              <div class="text-xs text-gray-400">FACTION</div>
+              <div class="font-teko text-2xl text-white">CLASS-B</div>
+            </div>
+            <div
+              class="bg-[#18181c] border-2 border-gray-700 p-3 text-center zzz-card"
+            >
+              <div class="text-xs text-gray-400">LEVEL</div>
+              <div class="font-teko text-2xl text-red-500">LVL 0</div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a
+              href="#commissions"
+              class="inline-block bg-zzz-yellow text-black font-teko text-3xl font-bold px-8 py-2 hover:bg-white hover:scale-105 transition-all shadow-[4px_4px_0px_0px_rgba(255,69,0,1)]"
+            >
+              ACCEPT COMMISSION →
+            </a>
+          </div>
+        </div>
+
+        <div class="relative w-full md:w-1/2 flex justify-center items-center">
+          <div
+            class="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-zzz-yellow/10 blur-3xl -z-10"
+          ></div>
+
+          <div
+            class="relative w-80 h-[420px] bg-[#141417] border-4 border-zzz-yellow p-4 zzz-card bg-stripes flex flex-col justify-between shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+          >
+            <div
+              class="flex justify-between items-center border-b border-gray-700 pb-2"
+            >
+              <span class="font-teko text-xl text-zzz-yellow"
+                >FILE: AGENT_01</span
+              >
+              <span class="w-3 h-3 bg-red-500 rounded-full animate-ping"></span>
+            </div>
+
+            <div
+              class="my-auto text-center border-2 border-dashed border-gray-600 p-8"
+            >
+              <div class="text-6xl mb-2">⚡</div>
+              <p class="font-teko text-2xl text-gray-400">
+                <img src="media/unknown" alt="" />
+              </p>
+            </div>
+
+            <div
+              class="bg-black/80 p-2 text-xs font-mono text-gray-400 flex justify-between"
+            >
+              <span>■■■ ■ ■■ ■ ■■■■</span>
+              <span>■■■ ■ ■-■■■■</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="py-20 border-t border-gray-800">
+        <h2
+          class="text-5xl font-teko font-black text-zzz-yellow mb-8 flex items-center gap-3"
+        >
+          <span class="bg-zzz-yellow text-black px-2 py-0.5 text-2xl">02</span>
+          SKILL
+        </h2>
+
+        <div class="skill-grid">
+          <article class="skill-card zzz-card">
+            <div class="skill-meta">
+              <span class="skill-tag">FRONTEND</span>
+              <span class="skill-level">ADV</span>
+            </div>
+            <div class="skill-label">DISC [01]</div>
+            <h3>React / Next.js</h3>
+            <p>
+              High-performance reactive UI architecture and scalable app flows.
+            </p>
+            <div class="skill-stack">
+              <span>SSR</span>
+              <span>UI</span>
+              <span>APP</span>
+            </div>
+          </article>
+
+          <article class="skill-card zzz-card">
+            <div class="skill-meta">
+              <span class="skill-tag">VISUAL</span>
+              <span class="skill-level">ADV</span>
+            </div>
+            <div class="skill-label">DISC [02]</div>
+            <h3>Design & CSS Animation</h3>
+            <p>HUD styling, custom motion design, and layout precision.</p>
+            <div class="skill-stack">
+              <span>CSS</span>
+              <span>ANIM</span>
+              <span>UX</span>
+            </div>
+          </article>
+
+          <article class="skill-card zzz-card">
+            <div class="skill-meta">
+              <span class="skill-tag">3D</span>
+              <span class="skill-level">MID</span>
+            </div>
+            <div class="skill-label">DISC [03]</div>
+            <h3>Three.js / WebGL</h3>
+            <p>
+              Interactive 3D visuals, shaders, and immersive web environments.
+            </p>
+            <div class="skill-stack">
+              <span>THREE</span>
+              <span>WEBGL</span>
+              <span>3D</span>
+            </div>
+          </article>
+
+          <article class="skill-card zzz-card">
+            <div class="skill-meta">
+              <span class="skill-tag">ROLE</span>
+              <span class="skill-level">ADV</span>
+            </div>
+            <div class="skill-label">DISC [04]</div>
+            <h3>Product Manager</h3>
+            <p>
+              Agile workflows, project planning, and team coordination for
+              efficient development.
+            </p>
+            <div class="skill-stack">
+              <span>AGILE</span>
+              <span>PLANNING</span>
+              <span>TEAM</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- COMMISSIONS / PROJECTS SECTION -->
+      <section id="commissions" class="py-20 border-t border-gray-800">
+        <h2
+          class="text-5xl font-teko font-black text-zzz-yellow mb-8 flex items-center gap-3"
+        >
+          <span class="bg-zzz-yellow text-black px-2 py-0.5 text-2xl">03</span>
+          COMMISSIONS (PROJECTS)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group"
+          >
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <span
+                  class="text-xs bg-red-600 text-white px-2 py-0.5 font-bold"
+                  >URGENT QUEST</span
+                >
+                <span class="font-mono text-xs text-gray-500"
+                  >COMMISSION #089</span
+                >
+              </div>
+              <h3
+                class="text-3xl font-teko font-bold group-hover:text-zzz-yellow transition-colors"
+              >
+                PROJECT_WRITING_PLATFORM (PenaAksara)
+              </h3>
+              <p class="text-sm text-gray-400 mt-2">
+                Create a dynamic writing platform for Novel and Other
+                Storytelling, with a focus on immersive user experience and
+                interactive features.
+              </p>
+            </div>
+            <div
+              class="mt-6 pt-4 border-t border-gray-800 flex justify-between items-center"
+            >
+              <span class="text-xs font-mono text-zzz-yellow"
+                >REWARD: EXP +5000</span
+              >
+              <span class="font-teko text-xl text-gray-500"
+                >CASE STUDY SOON</span
+              >
+            </div>
+          </div>
+
+          <a href="project/Ujian%20B2/profil.html">
+            <div
+              class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group"
+            >
+              <div>
+                <div class="flex justify-between items-start mb-4">
+                  <span
+                    class="text-xs bg-zzz-yellow text-black px-2 py-0.5 font-bold"
+                    >COMPLETED</span
+                  >
+                  <span class="font-mono text-xs text-gray-500"
+                    >COMMISSION #042</span
+                  >
+                </div>
+                <h3
+                  class="text-3xl font-teko font-bold group-hover:text-zzz-yellow transition-colors"
+                >
+                  PROJECT_GAMECARD_PROFILE (MinecraftBedrock)
+                </h3>
+                <p class="text-sm text-gray-400 mt-2">
+                  Create a dynamic game profile card for MinecraftBedrock, with
+                  a focus on immersive user experience and interactive features.
+                </p>
+              </div>
+              <div
+                class="mt-6 pt-4 border-t border-gray-800 flex justify-between items-center"
+              >
+                <span class="text-xs font-mono text-zzz-yellow"
+                  >REWARD: EXP +3500</span
+                >
+                <span class="font-teko text-xl text-gray-500"
+                  >CASE STUDY SOON</span
+                >
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="border-t-2 border-zzz-yellow bg-black py-8 px-6 text-center text-gray-500 text-sm font-mono"
+    >
+      <p>MUHAMMADYAZIDHASHYIDAN // ALL RIGHTS RESERVED © 2026</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

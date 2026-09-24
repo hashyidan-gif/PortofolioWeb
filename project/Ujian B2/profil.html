@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Saya | Minecraft Edition</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="minecraft-scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <img
+        src="Media/asset/skeletonshoot.gif"
+        alt="skeleton"
+        class="skeleton-animation"
+      />
+    </div>
+
+    <main class="profile-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>My Profile</span>
+        </div>
+
+        <button id="modeToggle" class="mode-toggle" type="button">
+          Creative Mode
+        </button>
+      </header>
+
+      <section class="hero">
+        <div class="avatar-panel">
+          <div class="avatar-frame">
+            <img src="Media/Character.png" alt="Avatar karakter" />
+          </div>
+
+          <div class="status-badges">
+            <span>Lv. 0</span>
+            <span>Operator</span>
+            <button id="lulu" class="action-btn" type="button">lulu</button>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <p class="player-tag">Player Profile</p>
+          <h1>M Yazid H</h1>
+          <p class="subtitle">
+            Builder • Explorer • Tricker • Coder Enthusiast
+          </p>
+
+          <div class="stats">
+            <div class="stat-box">
+              <strong>Health</strong>
+              <span>20/???</span>
+            </div>
+            <div class="stat-box">
+              <strong>Role</strong>
+              <span>Coder</span>
+            </div>
+            <div class="stat-box">
+              <strong>Biome</strong>
+              <span>Forest</span>
+            </div>
+            <div class="stat-box">
+              <strong>Active</strong>
+              <span id="serverTime">--:--</span>
+            </div>
+          </div>
+
+          <p class="bio">
+            Saya adalah pemain yang suka membangun temple, menjelajahi hutan,
+            dan menghadirkan suasana <del>santai</del> di dunia blok. Setiap
+            bangunan dibuat dengan rasa detail, kreativitas, dan semangat
+            eksplorasi.
+          </p>
+
+          <div class="action-row">
+            <button id="addFriendBtn" class="action-btn" type="button">
+              Add Friend
+            </button>
+            <button
+              id="sendMessageBtn"
+              class="action-btn secondary"
+              type="button"
+            >
+              Send Message
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div id="friendModal" class="friend-modal hidden" aria-hidden="true">
+        <div class="friend-modal__card">
+          <button class="friend-modal__close" type="button" aria-label="Tutup">
+            ×
+          </button>
+          <h3>Friend Request</h3>
+          <a
+            href="https://launch.minecraft.net/profile/CYBERMYH"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="friend-modal__link"
+          >
+            <div class="friend-modal__frame">
+              <img src="Media/xxz.jpeg" alt="Foto profil teman" />
+            </div>
+          </a>
+          <p>CyberMYH.</p>
+        </div>
+      </div>
+
+      <section class="inventory-grid">
+        <div class="panel">
+          <h2>Hobby</h2>
+          <ul class="quest-list">
+            <li><span>Bermain game</span><span>✓</span></li>
+            <li><span>Menonton/Membaca</span><span>♥</span></li>
+            <li><span>Menggambar/Menulis</span><span>✏️</span></li>
+            <li><span>Belajar hal baru</span><span>✨</span></li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>Trait</h2>
+          <div class="achievement-list">
+            <div class="achievement"><span class="emoji">🎮</span>Gamer</div>
+            <div class="achievement"><span class="emoji">🎨</span>Artist</div>
+            <div class="achievement"><span class="emoji">📚</span>Learner</div>
+            <div class="achievement"><span class="emoji">⚡</span>Creative</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">Minecraft Profile</div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
