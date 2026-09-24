@@ -45,14 +45,16 @@
       <source src="media/background.mp4" type="video/mp4" />
     </video>
     <div class="video-overlay" aria-hidden="true"></div>
+    <canvas id="cyber-canvas"></canvas>
 
     <div
       class="pointer-events-none fixed inset-0 z-30 scanline opacity-40"
       aria-hidden="true"
     ></div>
 
+    <!-- Fixed Header with EXP HUD and CLI Trigger -->
     <header
-      class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-6 py-3 flex justify-between items-center"
+      class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-4 md:px-6 py-2.5 flex justify-between items-center"
     >
       <div class="flex items-center gap-3">
         <a
@@ -61,13 +63,18 @@
         >
           PROGRAMMER //
         </a>
-        <span
-          class="text-xs tracking-widest text-gray-400 hidden sm:inline-block"
-          >COMMISSION TERMINAL V2.4</span
-        >
+
+        <!-- Gamified Agent Level HUD Widget -->
+        <div class="exp-hud-widget hidden sm:flex items-center">
+          <span id="hudLevelVal" class="text-zzz-yellow font-bold text-lg">LVL 0</span>
+          <div class="exp-bar-track">
+            <div id="hudExpBar" class="exp-bar-fill"></div>
+          </div>
+          <span id="hudExpVal" class="text-xs text-gray-300 font-mono">0 EXP</span>
+        </div>
       </div>
 
-      <nav class="flex gap-4 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
+      <nav class="flex items-center gap-3 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
         <a
           href="index.html#hero"
           class="hover:text-zzz-yellow transition-colors"
@@ -84,6 +91,12 @@
           >[ COMMISSIONS ]</a
         >
         <a href="contact.html" class="text-zzz-yellow">[ CONTACT ]</a>
+        <button
+          class="open-terminal-btn border border-zzz-yellow text-zzz-yellow px-2.5 py-0.5 text-base hover:bg-zzz-yellow hover:text-black transition-all flex items-center gap-1"
+          title="Open Proxy Command Terminal (Press ~)"
+        >
+          <span>⚡ CLI</span>
+        </button>
       </nav>
     </header>
 
@@ -146,6 +159,74 @@
         </div>
       </section>
     </main>
+
+    <!-- FLOATING BGM VINYL PLAYER WIDGET -->
+    <div
+      id="vinylWidget"
+      class="vinyl-player-widget"
+      title="Click to toggle cyber ambient background synthesizer"
+    >
+      <img
+        id="vinylDisc"
+        src="media/record.png"
+        alt="Vinyl Record"
+        class="vinyl-disc"
+      />
+      <div class="font-teko leading-none">
+        <span class="text-xs text-gray-400 block tracking-widest">SYNTH BGM</span>
+        <span id="vinylStatus" class="text-zzz-yellow text-lg font-bold block"
+          >BGM OFF</span
+        >
+      </div>
+    </div>
+
+    <!-- INTERACTIVE TERMINAL CLI DRAWER -->
+    <div
+      id="terminalModal"
+      class="terminal-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="terminalTitle"
+      aria-hidden="true"
+    >
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="flex items-center gap-2">
+            <span class="text-red-500">●</span>
+            <span class="text-yellow-500">●</span>
+            <span class="text-green-500">●</span>
+            <span id="terminalTitle" class="text-zzz-yellow text-xl ml-2">
+              PROXY TERMINAL V2.4 // HOLLOW OS (ACTIVE)
+            </span>
+          </div>
+          <button
+            id="closeTerminalBtn"
+            class="text-gray-400 hover:text-zzz-yellow text-2xl leading-none px-2"
+            aria-label="Close terminal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div id="terminalLogs" class="terminal-logs">
+          <div class="text-zzz-yellow">=== HOLLOW NETWORK PROXY TERMINAL INITIALIZED ===</div>
+          <div class="text-gray-400">Agent: MUHAMMAD YAZID HASHYIDAN // S-RANK FRONTEND</div>
+          <div class="text-gray-400 mb-2">Type <span class="text-white font-bold">'help'</span> for list of commands. Press [~] or [Esc] to exit.</div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="text-zzz-yellow font-bold text-sm">PROXY@HOLLOW:~$</span>
+          <input
+            id="terminalInput"
+            type="text"
+            class="terminal-input"
+            placeholder="type 'help', 'quests', 'skills', 'exp', 'bgm'..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+      </div>
+    </div>
 
     <footer
       class="border-t-2 border-zzz-yellow bg-black py-8 px-6 text-center text-gray-500 text-sm font-mono"

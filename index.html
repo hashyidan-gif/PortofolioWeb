@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="relative min-h-screen bg-[#0b0b0c] text-white">
+    <!-- Background Video & Dynamic Canvas Layers -->
     <video
       class="video-background"
       autoplay
@@ -46,14 +47,16 @@
       <source src="media/background.mp4" type="video/mp4" />
     </video>
     <div class="video-overlay" aria-hidden="true"></div>
+    <canvas id="cyber-canvas"></canvas>
 
     <div
       class="pointer-events-none fixed inset-0 z-30 scanline opacity-40"
       aria-hidden="true"
     ></div>
 
+    <!-- Fixed Header with EXP HUD and CLI Trigger -->
     <header
-      class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-6 py-3 flex justify-between items-center"
+      class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-4 md:px-6 py-2.5 flex justify-between items-center"
     >
       <div class="flex items-center gap-3">
         <a
@@ -62,13 +65,18 @@
         >
           PROGRAMMER //
         </a>
-        <span
-          class="text-xs tracking-widest text-gray-400 hidden sm:inline-block"
-          >PERSONAL PROFILE</span
-        >
+
+        <!-- Gamified Agent Level HUD Widget -->
+        <div class="exp-hud-widget hidden sm:flex items-center">
+          <span id="hudLevelVal" class="text-zzz-yellow font-bold text-lg">LVL 0</span>
+          <div class="exp-bar-track">
+            <div id="hudExpBar" class="exp-bar-fill"></div>
+          </div>
+          <span id="hudExpVal" class="text-xs text-gray-300 font-mono">0 EXP</span>
+        </div>
       </div>
 
-      <nav class="flex gap-4 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
+      <nav class="flex items-center gap-3 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
         <a href="#hero" class="hover:text-zzz-yellow transition-colors"
           >[ AGENT ]</a
         >
@@ -81,17 +89,26 @@
         <a href="contact.html" class="hover:text-zzz-yellow transition-colors"
           >[ CONTACT ]</a
         >
+        <button
+          class="open-terminal-btn border border-zzz-yellow text-zzz-yellow px-2.5 py-0.5 text-base hover:bg-zzz-yellow hover:text-black transition-all flex items-center gap-1"
+          title="Open Proxy Command Terminal (Press ~)"
+        >
+          <span>⚡ CLI</span>
+        </button>
       </nav>
     </header>
 
     <main class="pt-24 px-6 md:px-16 max-w-7xl mx-auto">
+      <!-- HERO SECTION -->
       <section
         id="hero"
         class="min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-12 py-10 relative"
       >
         <div class="flex-1 space-y-6 z-10">
           <div class="flex items-center gap-2">
-            <span class="bg-zzz-yellow text-black px-2 py-0.5 text-xs font-teko font-black tracking-widest">
+            <span
+              class="bg-zzz-yellow text-black px-2 py-0.5 text-xs font-teko font-black tracking-widest"
+            >
               01 // AGENT PROFILE
             </span>
             <div
@@ -134,7 +151,9 @@
               class="bg-[#18181c] border-2 border-gray-700 p-3 text-center zzz-card"
             >
               <div class="text-xs text-gray-400">LEVEL</div>
-              <div class="font-teko text-2xl text-red-500">LVL 0</div>
+              <div id="heroLevelDisplay" class="font-teko text-2xl text-red-500">
+                LVL 0
+              </div>
             </div>
           </div>
 
@@ -145,12 +164,11 @@
             >
               ACCEPT COMMISSION →
             </a>
-            <a
-              href="contact.html"
-              class="inline-block border-2 border-zzz-yellow text-zzz-yellow font-teko text-2xl md:text-3xl font-bold px-6 py-2 hover:bg-zzz-yellow hover:text-black transition-all"
+            <button
+              class="open-terminal-btn inline-block border-2 border-zzz-yellow text-zzz-yellow font-teko text-2xl md:text-3xl font-bold px-6 py-2 hover:bg-zzz-yellow hover:text-black transition-all flex items-center gap-2"
             >
-              DIRECT CONTACT
-            </a>
+              <span>⚡ LAUNCH CLI</span>
+            </button>
           </div>
         </div>
 
@@ -194,16 +212,22 @@
         </div>
       </section>
 
+      <!-- SKILLS SECTION -->
       <section id="skills" class="py-20 border-t border-gray-800">
-        <h2
-          class="text-5xl font-teko font-black text-zzz-yellow mb-8 flex items-center gap-3"
-        >
-          <span class="bg-zzz-yellow text-black px-2 py-0.5 text-2xl">02</span>
-          SKILL DISCS
-        </h2>
+        <div class="flex justify-between items-end mb-8">
+          <h2
+            class="text-5xl font-teko font-black text-zzz-yellow flex items-center gap-3"
+          >
+            <span class="bg-zzz-yellow text-black px-2 py-0.5 text-2xl">02</span>
+            SKILL DISCS
+          </h2>
+          <span class="text-xs text-gray-400 font-mono tracking-widest hidden sm:inline-block">
+            [ CLICK DISCS TO EXTRACT INTEL & EARN EXP ]
+          </span>
+        </div>
 
         <div class="skill-grid">
-          <article class="skill-card zzz-card">
+          <article class="skill-card zzz-card" title="Click to extract +250 EXP">
             <div class="skill-meta">
               <span class="skill-tag">FRONTEND</span>
               <span class="skill-level">ADV</span>
@@ -211,7 +235,7 @@
             <div class="skill-label">DISC [01]</div>
             <h3>React / Next.js</h3>
             <p>
-              High-performance reactive UI architecture and scalable app flows.
+              High-performance reactive UI architecture, app router flows, and SSR performance tuning.
             </p>
             <div class="skill-stack">
               <span>SSR</span>
@@ -220,14 +244,14 @@
             </div>
           </article>
 
-          <article class="skill-card zzz-card">
+          <article class="skill-card zzz-card" title="Click to extract +250 EXP">
             <div class="skill-meta">
               <span class="skill-tag">VISUAL</span>
               <span class="skill-level">ADV</span>
             </div>
             <div class="skill-label">DISC [02]</div>
             <h3>Design & CSS Animation</h3>
-            <p>HUD styling, custom motion design, and layout precision.</p>
+            <p>HUD styling, cyberpunk motion design, kinetic micro-interactions, and layout precision.</p>
             <div class="skill-stack">
               <span>CSS</span>
               <span>ANIM</span>
@@ -235,7 +259,7 @@
             </div>
           </article>
 
-          <article class="skill-card zzz-card">
+          <article class="skill-card zzz-card" title="Click to extract +250 EXP">
             <div class="skill-meta">
               <span class="skill-tag">3D</span>
               <span class="skill-level">MID</span>
@@ -243,7 +267,7 @@
             <div class="skill-label">DISC [03]</div>
             <h3>Three.js / WebGL</h3>
             <p>
-              Interactive 3D visuals, shaders, and immersive web environments.
+              Interactive 3D visuals, particle systems, procedural shaders, and spatial web environments.
             </p>
             <div class="skill-stack">
               <span>THREE</span>
@@ -252,7 +276,7 @@
             </div>
           </article>
 
-          <article class="skill-card zzz-card">
+          <article class="skill-card zzz-card" title="Click to extract +250 EXP">
             <div class="skill-meta">
               <span class="skill-tag">ROLE</span>
               <span class="skill-level">ADV</span>
@@ -260,8 +284,7 @@
             <div class="skill-label">DISC [04]</div>
             <h3>Product Manager</h3>
             <p>
-              Agile workflows, project planning, and team coordination for
-              efficient development.
+              Agile sprints, technical roadmaps, architecture scoping, and cross-functional team execution.
             </p>
             <div class="skill-stack">
               <span>AGILE</span>
@@ -282,8 +305,10 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- COMMISSION #089 (PenaAksara) with Interactive Briefing Modal Trigger -->
           <div
-            class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group transition-colors"
+            class="open-briefing-btn bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group transition-colors cursor-pointer"
+            title="Click to open full holographic dossier"
           >
             <div>
               <div class="flex justify-between items-start mb-4">
@@ -301,9 +326,8 @@
                 PROJECT_WRITING_PLATFORM (PenaAksara)
               </h3>
               <p class="text-sm text-gray-400 mt-2">
-                Create a dynamic writing platform for Novel and Other
-                Storytelling, with a focus on immersive user experience and
-                interactive features.
+                A dynamic storytelling & novel publishing platform featuring real-time
+                collaborative drafting, chapter tree branching, and distraction-free reader modes.
               </p>
             </div>
             <div
@@ -312,12 +336,16 @@
               <span class="text-xs font-mono text-zzz-yellow"
                 >REWARD: EXP +5000</span
               >
-              <span class="font-teko text-xl text-gray-500"
-                >CASE STUDY SOON</span
+              <button
+                type="button"
+                class="font-teko text-xl text-zzz-yellow group-hover:translate-x-1 transition-transform flex items-center gap-1"
               >
+                INSPECT DOSSIER →
+              </button>
             </div>
           </div>
 
+          <!-- COMMISSION #042 (MinecraftBedrock Gamecard Profile) -->
           <a
             href="project/Ujian%20B2/profil.html"
             class="block focus:outline-none focus:ring-2 focus:ring-zzz-yellow group"
@@ -342,8 +370,8 @@
                   PROJECT_GAMECARD_PROFILE (MinecraftBedrock)
                 </h3>
                 <p class="text-sm text-gray-400 mt-2">
-                  Create a dynamic game profile card for MinecraftBedrock, with
-                  a focus on immersive user experience and interactive features.
+                  Interactive retro game profile card for Minecraft Bedrock, featuring dynamic
+                  day/night biomes, celestial drifting, interactive character HUD, and audio synthesis.
                 </p>
               </div>
               <div
@@ -352,7 +380,8 @@
                 <span class="text-xs font-mono text-zzz-yellow"
                   >REWARD: EXP +3500</span
                 >
-                <span class="font-teko text-xl text-zzz-yellow group-hover:translate-x-1 transition-transform"
+                <span
+                  class="font-teko text-xl text-zzz-yellow group-hover:translate-x-1 transition-transform"
                   >OPEN PROJECT →</span
                 >
               </div>
@@ -361,6 +390,168 @@
         </div>
       </section>
     </main>
+
+    <!-- FLOATING BGM VINYL PLAYER WIDGET -->
+    <div
+      id="vinylWidget"
+      class="vinyl-player-widget"
+      title="Click to toggle cyber ambient background synthesizer"
+    >
+      <img
+        id="vinylDisc"
+        src="media/record.png"
+        alt="Vinyl Record"
+        class="vinyl-disc"
+      />
+      <div class="font-teko leading-none">
+        <span class="text-xs text-gray-400 block tracking-widest">SYNTH BGM</span>
+        <span id="vinylStatus" class="text-zzz-yellow text-lg font-bold block"
+          >BGM OFF</span
+        >
+      </div>
+    </div>
+
+    <!-- HOLOGRAPHIC MISSION BRIEFING MODAL (PENAAKSARA) -->
+    <div
+      id="briefingModal"
+      class="briefing-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="briefingTitle"
+      aria-hidden="true"
+    >
+      <div class="briefing-card">
+        <div class="briefing-header">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="bg-red-600 text-black text-xs font-teko font-black px-2 py-0.5">
+                URGENT QUEST DOSSIER
+              </span>
+              <span class="font-mono text-xs text-gray-400">COMMISSION #089</span>
+            </div>
+            <h2 id="briefingTitle" class="text-4xl md:text-5xl font-teko text-zzz-yellow leading-none">
+              PROJECT_WRITING_PLATFORM (PenaAksara)
+            </h2>
+          </div>
+          <button
+            id="closeBriefingBtn"
+            class="text-gray-400 hover:text-zzz-yellow font-teko text-3xl px-2 leading-none"
+            aria-label="Close dossier"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="p-6 md:p-8 space-y-6">
+          <div>
+            <h3 class="text-xl font-teko text-white tracking-wider mb-2">
+              // ARCHITECTURAL SPECIFICATION
+            </h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              PenaAksara is an immersive storytelling & novel creation suite designed for authors,
+              screenwriters, and serial novel creators. Engineered with offline resilience and rapid
+              reactive typing interfaces, it eliminates friction in creative writing workflows.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-[#181920] border border-gray-800 p-4">
+              <div class="text-xs text-zzz-yellow font-teko text-lg mb-1">01 / DISTRACTION-FREE</div>
+              <p class="text-xs text-gray-400">
+                Zen editing HUD with customizable typographic scales, ambient sounds, and typewriter scroll anchoring.
+              </p>
+            </div>
+            <div class="bg-[#181920] border border-gray-800 p-4">
+              <div class="text-xs text-zzz-yellow font-teko text-lg mb-1">02 / BRANCHING CHAPTERS</div>
+              <p class="text-xs text-gray-400">
+                Interactive chapter graph outline permitting non-linear narrative planning and character lore cards.
+              </p>
+            </div>
+            <div class="bg-[#181920] border border-gray-800 p-4">
+              <div class="text-xs text-zzz-yellow font-teko text-lg mb-1">03 / OFFLINE RESILIENCE</div>
+              <p class="text-xs text-gray-400">
+                Local-first IndexedDB persistence with automatic delta background synchronization to the cloud.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-teko text-white tracking-wider mb-2">
+              // CORE TECHNOLOGY STACK
+            </h3>
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="bg-gray-800 text-zzz-yellow px-3 py-1 border border-zzz-yellow/30">Next.js 14 App Router</span>
+              <span class="bg-gray-800 text-white px-3 py-1 border border-gray-700">TypeScript</span>
+              <span class="bg-gray-800 text-white px-3 py-1 border border-gray-700">TailwindCSS</span>
+              <span class="bg-gray-800 text-white px-3 py-1 border border-gray-700">IndexedDB Storage</span>
+              <span class="bg-gray-800 text-white px-3 py-1 border border-gray-700">WebSockets Collab</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-gray-800 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+              <img src="media/shinygoldcoin.gif" alt="EXP" class="w-6 h-6 object-contain" />
+              <span class="text-sm font-mono text-zzz-yellow">MISSION REWARD: 5000 PROXY EXP</span>
+            </div>
+
+            <button
+              id="claimMissionExpBtn"
+              class="bg-zzz-yellow text-black font-teko text-2xl font-bold px-8 py-2 hover:bg-white transition-all shadow-[4px_4px_0px_0px_rgba(255,69,0,1)]"
+            >
+              CLAIM EXP +5000 ★
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE TERMINAL CLI DRAWER -->
+    <div
+      id="terminalModal"
+      class="terminal-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="terminalTitle"
+      aria-hidden="true"
+    >
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="flex items-center gap-2">
+            <span class="text-red-500">●</span>
+            <span class="text-yellow-500">●</span>
+            <span class="text-green-500">●</span>
+            <span id="terminalTitle" class="text-zzz-yellow text-xl ml-2">
+              PROXY TERMINAL V2.4 // HOLLOW OS (ACTIVE)
+            </span>
+          </div>
+          <button
+            id="closeTerminalBtn"
+            class="text-gray-400 hover:text-zzz-yellow text-2xl leading-none px-2"
+            aria-label="Close terminal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div id="terminalLogs" class="terminal-logs">
+          <div class="text-zzz-yellow">=== HOLLOW NETWORK PROXY TERMINAL INITIALIZED ===</div>
+          <div class="text-gray-400">Agent: MUHAMMAD YAZID HASHYIDAN // S-RANK FRONTEND</div>
+          <div class="text-gray-400 mb-2">Type <span class="text-white font-bold">'help'</span> for list of commands. Press [~] or [Esc] to exit.</div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="text-zzz-yellow font-bold text-sm">PROXY@HOLLOW:~$</span>
+          <input
+            id="terminalInput"
+            type="text"
+            class="terminal-input"
+            placeholder="type 'help', 'quests', 'skills', 'exp', 'bgm'..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+      </div>
+    </div>
 
     <footer
       class="border-t-2 border-zzz-yellow bg-black py-8 px-6 text-center text-gray-500 text-sm font-mono"

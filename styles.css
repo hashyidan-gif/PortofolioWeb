@@ -15,6 +15,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Background Layers */
 .video-background,
 .video-overlay {
   position: fixed;
@@ -31,12 +32,21 @@ body {
 
 .video-overlay {
   z-index: 1;
-  background: rgba(11, 11, 12, 0.68);
+  background: rgba(11, 11, 12, 0.72);
+}
+
+#cyber-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 main {
   position: relative;
-  z-index: 2;
+  z-index: 10;
 }
 
 /* Custom Theme Colors & Utilities */
@@ -46,6 +56,10 @@ main {
 
 .bg-zzz-yellow\/10 {
   background-color: rgba(247, 224, 24, 0.1);
+}
+
+.bg-zzz-yellow\/20 {
+  background-color: rgba(247, 224, 24, 0.2);
 }
 
 .text-zzz-yellow {
@@ -58,6 +72,10 @@ main {
 
 .border-zzz-yellow\/20 {
   border-color: rgba(247, 224, 24, 0.2);
+}
+
+.border-zzz-yellow\/50 {
+  border-color: rgba(247, 224, 24, 0.5);
 }
 
 .hover\:border-zzz-yellow:hover {
@@ -197,6 +215,7 @@ main {
   background-size: 100% 4px;
 }
 
+/* Skill Grid & Cards */
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -209,6 +228,7 @@ main {
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
@@ -363,4 +383,239 @@ main {
   color: #e5e7eb;
   line-height: 1.6;
   letter-spacing: 0.5px;
+}
+
+/* ========================================================== */
+/* EXP HUD & PROGRESSION BAR                                 */
+/* ========================================================== */
+.exp-hud-widget {
+  background: rgba(14, 14, 18, 0.88);
+  border: 1px solid rgba(247, 224, 24, 0.35);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Teko", sans-serif;
+  letter-spacing: 1px;
+}
+
+.exp-bar-track {
+  width: 90px;
+  height: 6px;
+  background: #202025;
+  border: 1px solid #3a3a40;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f7e018, #ff8c00);
+  box-shadow: 0 0 8px rgba(247, 224, 24, 0.8);
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ========================================================== */
+/* FLOATING VINYL BGM PLAYER                                 */
+/* ========================================================== */
+.vinyl-player-widget {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 15, 18, 0.92);
+  border: 2px solid rgba(247, 224, 24, 0.4);
+  padding: 6px 14px 6px 8px;
+  backdrop-blur-md: blur(8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  clip-path: polygon(0 0, 92% 0, 100% 25%, 100% 100%, 8% 100%, 0 75%);
+}
+
+.vinyl-player-widget:hover {
+  border-color: #f7e018;
+  filter: drop-shadow(0 0 10px rgba(247, 224, 24, 0.3));
+  transform: translateY(-2px);
+}
+
+.vinyl-disc {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.vinyl-disc.spinning {
+  animation: spinRecord 3s linear infinite;
+}
+
+@keyframes spinRecord {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================================== */
+/* TERMINAL CLI DRAWER                                       */
+/* ========================================================== */
+.terminal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(8, 8, 10, 0.82);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.terminal-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.terminal-window {
+  width: min(840px, 96vw);
+  height: min(540px, 80vh);
+  background: #0d0e12;
+  border: 2px solid #f7e018;
+  box-shadow: 0 0 25px rgba(247, 224, 24, 0.18), 0 20px 50px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: #181920;
+  border-bottom: 2px solid #f7e018;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Teko", sans-serif;
+  letter-spacing: 1px;
+}
+
+.terminal-logs {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #d1d5db;
+}
+
+.terminal-input-row {
+  border-top: 1px solid #282930;
+  background: #111216;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f7e018;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+/* ========================================================== */
+/* HOLOGRAPHIC MISSION BRIEFING MODAL                        */
+/* ========================================================== */
+.briefing-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(7, 7, 10, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.briefing-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.briefing-card {
+  width: min(880px, 96vw);
+  max-height: 90vh;
+  background: #111217;
+  border: 3px solid #f7e018;
+  box-shadow: 0 0 35px rgba(247, 224, 24, 0.2), 0 25px 60px rgba(0, 0, 0, 0.95);
+  overflow-y: auto;
+  position: relative;
+  clip-path: polygon(0 0, 96% 0, 100% 4%, 100% 100%, 4% 100%, 0 96%);
+}
+
+.briefing-header {
+  background: linear-gradient(90deg, rgba(247, 224, 24, 0.15), transparent);
+  border-bottom: 2px solid #f7e018;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Toast Notifications */
+.hud-toast-container {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.hud-toast {
+  background: #16171d;
+  border-left: 4px solid #f7e018;
+  border-right: 1px solid #333;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  padding: 10px 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  font-family: "Teko", sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: toastSlideIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
