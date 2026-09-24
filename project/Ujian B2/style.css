@@ -220,6 +220,31 @@ body::before {
   text-shadow: 3px 3px 0 #4c3524;
 }
 
+.back-btn {
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  padding: 4px 8px;
+  background: rgba(43, 27, 14, 0.45);
+  border: 2px solid #533d22;
+  color: #fce899;
+  text-shadow: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.back-btn:hover {
+  background: #f7d164;
+  color: #2b1b0e;
+  transform: translateY(-1px);
+}
+
+.brand-sep {
+  opacity: 0.4;
+  font-weight: normal;
+  margin: 0 2px;
+}
+
 .brand-mark {
   width: 18px;
   height: 18px;
@@ -616,15 +641,43 @@ body::before {
   text-shadow: 2px 2px 0 rgba(46, 31, 15, 0.8);
 }
 
+.footer-link {
+  color: #fce899;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-sep {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
 body.creative-mode {
   background: linear-gradient(
     to bottom,
-    #1f2c49 0%,
-    #355c96 32%,
-    #6cb7d9 40%,
-    #4e9b52 40%,
-    #2d6b2e 100%
+    #131d33 0%,
+    #253f66 32%,
+    #3f6b8a 40%,
+    #2b5735 40%,
+    #1b3b1c 100%
   );
+}
+
+body.creative-mode .sun {
+  background: radial-gradient(
+    circle at 35% 35%,
+    #ffffff 0%,
+    #e2e8f0 35%,
+    #cbd5e1 70%,
+    #94a3b8 100%
+  );
+  box-shadow: 0 0 40px rgba(226, 232, 240, 0.75);
 }
 
 body.creative-mode .profile-shell {

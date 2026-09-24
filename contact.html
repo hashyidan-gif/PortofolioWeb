@@ -1,11 +1,31 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CONTACT // Muhammad Yazid Hasyhidan</title>
+    <title>CONTACT // Muhammad Yazid Hashyidan</title>
+    <meta
+      name="description"
+      content="Contact Muhammad Yazid Hashyidan - Direct communication via WhatsApp and code archive on GitHub."
+    />
 
+    <script>
+      tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              "zzz-yellow": "#f7e018",
+            },
+            fontFamily: {
+              teko: ["Teko", "sans-serif"],
+              chakra: ["Chakra Petch", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Chakra+Petch:ital,wght@0,500;0,700;1,700&display=swap"
       rel="stylesheet"
@@ -27,7 +47,8 @@
     <div class="video-overlay" aria-hidden="true"></div>
 
     <div
-      class="pointer-events-none fixed inset-0 z-50 scanline opacity-40"
+      class="pointer-events-none fixed inset-0 z-30 scanline opacity-40"
+      aria-hidden="true"
     ></div>
 
     <header
@@ -36,7 +57,7 @@
       <div class="flex items-center gap-3">
         <a
           href="index.html"
-          class="bg-zzz-yellow text-black font-black px-3 py-1 font-teko text-2xl rotate-[-2deg]"
+          class="bg-zzz-yellow text-black font-black px-3 py-1 font-teko text-2xl rotate-[-2deg] hover:bg-white transition-colors"
         >
           PROGRAMMER //
         </a>
@@ -46,13 +67,22 @@
         >
       </div>
 
-      <nav class="flex gap-6 font-teko text-2xl tracking-wider">
+      <nav class="flex gap-4 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
         <a
           href="index.html#hero"
           class="hover:text-zzz-yellow transition-colors"
           >[ AGENT ]</a
         >
-
+        <a
+          href="index.html#skills"
+          class="hover:text-zzz-yellow transition-colors"
+          >[ SKILLS ]</a
+        >
+        <a
+          href="index.html#commissions"
+          class="hover:text-zzz-yellow transition-colors"
+          >[ COMMISSIONS ]</a
+        >
         <a href="contact.html" class="text-zzz-yellow">[ CONTACT ]</a>
       </nav>
     </header>
@@ -74,8 +104,8 @@
           <p
             class="text-gray-300 max-w-lg border-l-4 border-zzz-yellow pl-4 py-1 mt-6"
           >
-            Choose a channel to start a conversation or inspect the code
-            archive.
+            Choose a channel to start a conversation, accept a commission, or
+            inspect the code archive.
           </p>
         </div>
 
@@ -84,13 +114,15 @@
             href="https://wa.me/6281317720178"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-[#141417] border-2 border-gray-700 hover:border-zzz-yellow p-8 zzz-card transition-all"
+            class="bg-[#141417] border-2 border-gray-700 hover:border-zzz-yellow p-8 zzz-card transition-all group"
           >
             <div class="text-xs text-gray-400 mb-3">DIRECT COMMS</div>
-            <h2 class="font-teko text-5xl text-zzz-yellow">WHATSAPP</h2>
+            <h2 class="font-teko text-5xl text-zzz-yellow group-hover:translate-x-1 transition-transform">
+              WHATSAPP
+            </h2>
             <p class="font-mono text-xl text-white mt-3">081317720178</p>
-            <span class="block text-xs text-gray-500 mt-8"
-              >OPEN CHANNEL -></span
+            <span class="block text-xs text-gray-500 mt-8 group-hover:text-zzz-yellow transition-colors"
+              >OPEN CHANNEL →</span
             >
           </a>
 
@@ -98,15 +130,17 @@
             href="https://github.com/hashyidan-gif"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-[#141417] border-2 border-gray-700 hover:border-zzz-yellow p-8 zzz-card transition-all"
+            class="bg-[#141417] border-2 border-gray-700 hover:border-zzz-yellow p-8 zzz-card transition-all group"
           >
             <div class="text-xs text-gray-400 mb-3">CODE ARCHIVE</div>
-            <h2 class="font-teko text-5xl text-zzz-yellow">GITHUB</h2>
+            <h2 class="font-teko text-5xl text-zzz-yellow group-hover:translate-x-1 transition-transform">
+              GITHUB
+            </h2>
             <p class="font-mono text-xl text-white mt-3 break-all">
               github.com/hashyidan-gif
             </p>
-            <span class="block text-xs text-gray-500 mt-8"
-              >VIEW ARCHIVE -></span
+            <span class="block text-xs text-gray-500 mt-8 group-hover:text-zzz-yellow transition-colors"
+              >VIEW ARCHIVE →</span
             >
           </a>
         </div>
@@ -119,6 +153,6 @@
       <p>MUHAMMAD YAZID HASHYIDAN // ALL RIGHTS RESERVED © 2026</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

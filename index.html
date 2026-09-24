@@ -1,12 +1,30 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PROXY PORTFOLIO // Muhammad Yazid Hasyhidan</title>
+    <title>PROXY PORTFOLIO // Muhammad Yazid Hashyidan</title>
+    <meta
+      name="description"
+      content="Portfolio of Muhammad Yazid Hashyidan - S-Rank Frontend Developer, spatial experiences, and UI/UX HUD design."
+    />
 
+    <script>
+      tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              "zzz-yellow": "#f7e018",
+            },
+            fontFamily: {
+              teko: ["Teko", "sans-serif"],
+              chakra: ["Chakra Petch", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <link
@@ -15,7 +33,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="relative min-h-screen bg-[#0b0b0c] text-white select-none">
+  <body class="relative min-h-screen bg-[#0b0b0c] text-white">
     <video
       class="video-background"
       autoplay
@@ -30,29 +48,36 @@
     <div class="video-overlay" aria-hidden="true"></div>
 
     <div
-      class="pointer-events-none fixed inset-0 z-50 scanline opacity-40"
+      class="pointer-events-none fixed inset-0 z-30 scanline opacity-40"
+      aria-hidden="true"
     ></div>
 
     <header
       class="fixed top-0 left-0 w-full z-40 bg-[#0b0b0c]/90 backdrop-blur-md border-b-2 border-zzz-yellow px-6 py-3 flex justify-between items-center"
     >
       <div class="flex items-center gap-3">
-        <div
-          class="bg-zzz-yellow text-black font-black px-3 py-1 font-teko text-2xl rotate-[-2deg]"
+        <a
+          href="#hero"
+          class="bg-zzz-yellow text-black font-black px-3 py-1 font-teko text-2xl rotate-[-2deg] hover:bg-white transition-colors"
         >
           PROGRAMMER //
-        </div>
+        </a>
         <span
           class="text-xs tracking-widest text-gray-400 hidden sm:inline-block"
           >PERSONAL PROFILE</span
         >
       </div>
 
-      <nav class="flex gap-6 font-teko text-2xl tracking-wider">
+      <nav class="flex gap-4 md:gap-6 font-teko text-xl md:text-2xl tracking-wider">
         <a href="#hero" class="hover:text-zzz-yellow transition-colors"
           >[ AGENT ]</a
         >
-
+        <a href="#skills" class="hover:text-zzz-yellow transition-colors"
+          >[ SKILLS ]</a
+        >
+        <a href="#commissions" class="hover:text-zzz-yellow transition-colors"
+          >[ COMMISSIONS ]</a
+        >
         <a href="contact.html" class="hover:text-zzz-yellow transition-colors"
           >[ CONTACT ]</a
         >
@@ -65,10 +90,15 @@
         class="min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-12 py-10 relative"
       >
         <div class="flex-1 space-y-6 z-10">
-          <div
-            class="inline-block bg-red-600 text-black font-bold px-3 py-1 text-xs uppercase tracking-widest skew-x-[-12deg]"
-          >
-            ★ S-RANK DEVELOPER
+          <div class="flex items-center gap-2">
+            <span class="bg-zzz-yellow text-black px-2 py-0.5 text-xs font-teko font-black tracking-widest">
+              01 // AGENT PROFILE
+            </span>
+            <div
+              class="inline-block bg-red-600 text-black font-bold px-3 py-1 text-xs uppercase tracking-widest skew-x-[-12deg]"
+            >
+              ★ S-RANK DEVELOPER
+            </div>
           </div>
 
           <h1
@@ -76,8 +106,8 @@
           >
             <span
               class="glitch-text text-zzz-yellow"
-              data-text="MUHAMMAD_YAZID_HASYHIDAN"
-              >MUHAMMAD_YAZID_HASYHIDAN</span
+              data-text="MUHAMMAD_YAZID_HASHYIDAN"
+              >MUHAMMAD_YAZID_HASHYIDAN</span
             ><br />
             <span class="text-white">FRONTEND DEVELOPER</span>
           </h1>
@@ -87,11 +117,7 @@
             id="typewriter"
           ></div>
 
-          <br />
-          <br />
-          <br />
-
-          <div class="grid grid-cols-3 gap-4 pt-4 max-w-md">
+          <div class="grid grid-cols-3 gap-4 pt-2 max-w-md">
             <div
               class="bg-[#18181c] border-2 border-gray-700 p-3 text-center zzz-card"
             >
@@ -112,12 +138,18 @@
             </div>
           </div>
 
-          <div class="pt-4">
+          <div class="pt-4 flex flex-wrap gap-4">
             <a
               href="#commissions"
-              class="inline-block bg-zzz-yellow text-black font-teko text-3xl font-bold px-8 py-2 hover:bg-white hover:scale-105 transition-all shadow-[4px_4px_0px_0px_rgba(255,69,0,1)]"
+              class="inline-block bg-zzz-yellow text-black font-teko text-2xl md:text-3xl font-bold px-8 py-2 hover:bg-white hover:scale-105 transition-all shadow-[4px_4px_0px_0px_rgba(255,69,0,1)]"
             >
               ACCEPT COMMISSION →
+            </a>
+            <a
+              href="contact.html"
+              class="inline-block border-2 border-zzz-yellow text-zzz-yellow font-teko text-2xl md:text-3xl font-bold px-6 py-2 hover:bg-zzz-yellow hover:text-black transition-all"
+            >
+              DIRECT CONTACT
             </a>
           </div>
         </div>
@@ -140,12 +172,16 @@
             </div>
 
             <div
-              class="my-auto text-center border-2 border-dashed border-gray-600 p-8"
+              class="my-auto text-center border-2 border-dashed border-gray-600 p-6 flex flex-col items-center justify-center"
             >
-              <div class="text-6xl mb-2">⚡</div>
-              <p class="font-teko text-2xl text-gray-400">
-                <img src="media/unknown" alt="" />
-              </p>
+              <div class="text-4xl mb-2 text-zzz-yellow">⚡</div>
+              <div class="w-full overflow-hidden">
+                <img
+                  src="media/agent_unknown.gif"
+                  alt="Agent 01 profile animation"
+                  class="w-full h-auto max-h-48 object-contain mx-auto"
+                />
+              </div>
             </div>
 
             <div
@@ -163,7 +199,7 @@
           class="text-5xl font-teko font-black text-zzz-yellow mb-8 flex items-center gap-3"
         >
           <span class="bg-zzz-yellow text-black px-2 py-0.5 text-2xl">02</span>
-          SKILL
+          SKILL DISCS
         </h2>
 
         <div class="skill-grid">
@@ -247,7 +283,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
-            class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group"
+            class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group transition-colors"
           >
             <div>
               <div class="flex justify-between items-start mb-4">
@@ -282,9 +318,13 @@
             </div>
           </div>
 
-          <a href="project/Ujian%20B2/profil.html">
+          <a
+            href="project/Ujian%20B2/profil.html"
+            class="block focus:outline-none focus:ring-2 focus:ring-zzz-yellow group"
+            aria-label="View Minecraft Bedrock gamecard profile project"
+          >
             <div
-              class="bg-[#141417] border-2 border-gray-700 hover:border-red-500 p-6 zzz-card flex flex-col justify-between relative group"
+              class="h-full bg-[#141417] border-2 border-gray-700 group-hover:border-zzz-yellow p-6 zzz-card flex flex-col justify-between relative transition-colors"
             >
               <div>
                 <div class="flex justify-between items-start mb-4">
@@ -297,7 +337,7 @@
                   >
                 </div>
                 <h3
-                  class="text-3xl font-teko font-bold group-hover:text-zzz-yellow transition-colors"
+                  class="text-3xl font-teko font-bold text-white group-hover:text-zzz-yellow transition-colors"
                 >
                   PROJECT_GAMECARD_PROFILE (MinecraftBedrock)
                 </h3>
@@ -312,8 +352,8 @@
                 <span class="text-xs font-mono text-zzz-yellow"
                   >REWARD: EXP +3500</span
                 >
-                <span class="font-teko text-xl text-gray-500"
-                  >CASE STUDY SOON</span
+                <span class="font-teko text-xl text-zzz-yellow group-hover:translate-x-1 transition-transform"
+                  >OPEN PROJECT →</span
                 >
               </div>
             </div>
@@ -325,7 +365,7 @@
     <footer
       class="border-t-2 border-zzz-yellow bg-black py-8 px-6 text-center text-gray-500 text-sm font-mono"
     >
-      <p>MUHAMMADYAZIDHASHYIDAN // ALL RIGHTS RESERVED © 2026</p>
+      <p>MUHAMMAD YAZID HASHYIDAN // ALL RIGHTS RESERVED © 2026</p>
     </footer>
 
     <script src="script.js" defer></script>

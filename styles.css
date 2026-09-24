@@ -4,12 +4,15 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Chakra Petch", sans-serif;
   background-color: #0b0b0c;
   color: #ffffff;
   overflow-x: hidden;
-  margin-left: -80px;
 }
 
 .video-background,
@@ -36,8 +39,13 @@ main {
   z-index: 2;
 }
 
+/* Custom Theme Colors & Utilities */
 .bg-zzz-yellow {
   background-color: #f7e018;
+}
+
+.bg-zzz-yellow\/10 {
+  background-color: rgba(247, 224, 24, 0.1);
 }
 
 .text-zzz-yellow {
@@ -48,8 +56,24 @@ main {
   border-color: #f7e018;
 }
 
+.border-zzz-yellow\/20 {
+  border-color: rgba(247, 224, 24, 0.2);
+}
+
+.hover\:border-zzz-yellow:hover {
+  border-color: #f7e018;
+}
+
+.group:hover .group-hover\:text-zzz-yellow {
+  color: #f7e018;
+}
+
 .font-teko {
   font-family: "Teko", sans-serif;
+}
+
+.font-chakra {
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .bg-stripes {
@@ -62,6 +86,7 @@ main {
   );
 }
 
+/* Glitch Typography */
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -134,6 +159,33 @@ main {
   }
 }
 
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 85, 0.75), -0.025em -0.05em 0 rgba(0, 255, 255, 0.75), 0.025em 0.05em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(0);
+  }
+  20% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 85, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75), -0.05em -0.05em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    text-shadow: 0.05em 0.03em 0 rgba(255, 0, 85, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75), 0 -0.04em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(1px, -1px);
+  }
+  60% {
+    text-shadow: -0.05em 0 0 rgba(255, 0, 85, 0.75), -0.025em -0.025em 0 rgba(0, 255, 255, 0.75), -0.025em -0.05em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    text-shadow: 0.025em 0.025em 0 rgba(255, 0, 85, 0.75), 0.025em -0.025em 0 rgba(0, 255, 255, 0.75), 0.025em -0.05em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(1px, 1px);
+  }
+  100% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 85, 0.75), -0.025em -0.05em 0 rgba(0, 255, 255, 0.75), 0.025em 0.05em 0 rgba(247, 224, 24, 0.75);
+    transform: translate(0);
+  }
+}
+
 .scanline {
   background: linear-gradient(
     to bottom,
@@ -158,9 +210,9 @@ main {
   position: relative;
   overflow: hidden;
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    filter 0.25s ease;
 }
 
 .skill-card::before {
@@ -174,7 +226,7 @@ main {
 
 .skill-card:hover {
   border-color: #f7e018;
-  box-shadow: 0 0 0 1px rgba(247, 224, 24, 0.2);
+  filter: drop-shadow(0 0 8px rgba(247, 224, 24, 0.35));
 }
 
 .skill-meta {
@@ -184,7 +236,7 @@ main {
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   color: #9ca3af;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
@@ -216,7 +268,7 @@ main {
 }
 
 .skill-card p {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
@@ -233,7 +285,7 @@ main {
   border: 1px solid #3a3a3d;
   background: rgba(255, 255, 255, 0.02);
   color: #e5e7eb;
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   letter-spacing: 0.08em;
   padding: 0.25rem 0.45rem;
 }
@@ -242,11 +294,13 @@ main {
   clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%);
   transition:
     transform 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    filter 0.2s ease;
 }
 
 .zzz-card:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-4px) scale(1.015);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
 }
 
 .animate-in {
@@ -268,7 +322,7 @@ main {
 @keyframes content-enter {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -278,13 +332,13 @@ main {
 
 @media (max-width: 640px) {
   header {
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
   }
 
   header nav {
     gap: 0.75rem;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     line-height: 1;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -303,17 +357,10 @@ main {
 }
 
 .grole {
-  height: 30px;
-  font-weight: bold;
-
+  min-height: 52px;
+  font-weight: 500;
   position: relative;
-  color: white;
-  text-shadow:
-    0.05em 0 0 rgba(255, 0, 0, 0.75),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
-    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-  animation: glitch 3s infinite;
-  letter-spacing: 5px;
-  padding-bottom: 80px;
-  margin-bottom: 60px;
+  color: #e5e7eb;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
 }
